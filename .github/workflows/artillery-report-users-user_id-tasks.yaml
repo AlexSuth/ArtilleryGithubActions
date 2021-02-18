@@ -2,48 +2,53 @@ name: Artillery Action to test endpoint function users-userId-tasks
 
 on:
   push:
+    # When a branch is merged with main branch, this action happens
     branches:
-      - main  # On merge with master, call this action
+      - main  
 
+# Setup env variables for Node, NPM, and Python
 env:
-  NODE_VERSION: '14'  # the version of node we are using
+  NODE_VERSION: '14'  # Version of Node being used
   NPM_CONFIG_PREFIX: "~/.npm-global" # Required to set path for artillery call
-  PYTHON_VERSION: '3.8' # the version of python we are using
+  PYTHON_VERSION: '3.8' # Version of Python being used.
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest # tells GH actions what we'll be running everything on
+  artilery test on endpoint /users/{user_id}/tasks:
+    #initialize VM for action to run on 
+    runs-on: ubuntu-latest 
 
     steps:
-    - name: 'Checkout Repository GitHub Action' # checks out the repository
+    # Checks out the repository
+    - name: 'Checkout Repository GitHub Action' 
       uses: actions/checkout@v2
 
     - name: check files
       run: |
         cd ./scripts
         ls -a
-    - name: Setup Node ${{ env.NODE_VERSION }} Environment # this is the script that sets up node
+
+    # Setup Node
+    - name: Setup Node ${{ env.NODE_VERSION }} Environment 
       uses: actions/setup-node@v2
       with:
         node-version: ${{ env.NODE_VERSION }}
         check-latest: true
     
+    # npm init
     - name: 'Run npm init'
       run: npm init -y
 
     - name: Run npm install artillery  
       run: npm install -g artillery
 
-    # - name: Check global npm location
-    #   run: npm list -g
-
+    # Get date for naming conventions
     - name: Get current date
       id: date
       run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H-%M-%S')"
 
-    - name: Sleep
-      run: sleep 10s
+    # - name: Sleep
+    #   run: sleep 10s
 
-    # Call artillery
+    # Call Artillery Test located at ./test/artillery/artillery-users-user_id-tasks.yaml
     - name: Run Artillery Test
       run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artillery_${{ steps.date.outputs.date }}.json ./test/artillery/artillery-users-user_id-tasks.yaml
