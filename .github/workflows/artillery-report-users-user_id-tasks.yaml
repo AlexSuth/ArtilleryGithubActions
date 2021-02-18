@@ -13,7 +13,7 @@ env:
   PYTHON_VERSION: '3.8' # Version of Python being used.
 
 jobs:
-  artilery test on endpoint /users/{user_id}/tasks:
+  artilery-test-users-user_id-tasks:
     #initialize VM for action to run on 
     runs-on: ubuntu-latest 
 
