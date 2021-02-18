@@ -1,18 +1,13 @@
 config:
   target: "https://nsc-fun-dev-usw2-thursday.azurewebsites.net"
   phases:
-    - duration: 10
-      arrivalRate: 4
-      name: Warm up 1 request per second
-
-    # # Testing at higher load  
-    # - duration: 1200
-    #   arrivalRate: 2
-    #   rampTo: 6
-    #   name: Ramp up load 2-6 requests / second
-    # - duration: 1800
-    #   arrivalRate: 10
-    #   name: Sustained load 10 Requests per second
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 50
+      name: "Warm up application"
+    - duration: 600
+      arrivalRate: 50
+      name: "Sustained max load"
 
 scenarios:
   - name: "Test flow"
