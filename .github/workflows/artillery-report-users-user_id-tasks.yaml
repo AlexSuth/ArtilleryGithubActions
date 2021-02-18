@@ -1,4 +1,4 @@
-name: atillery-action-test-users-user_id-tasks
+name: setup
 
 on:
   push:
