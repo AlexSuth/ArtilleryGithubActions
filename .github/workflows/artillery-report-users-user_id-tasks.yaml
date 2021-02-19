@@ -54,13 +54,13 @@ jobs:
     - name: Run Artillery Test
       run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output .test/results/artillery-test-users-user_id-tasks-results.json ./test/artillery/artillery-users-user_id-tasks.yaml
       
-      - name: Rename results json
-        run: |
-          cp test/results/slsart-users-uid-tasks-results.json "test/results/artillery-test-users-user_id-tasks_${{ steps.date.outputs.date }}.json"
-      # Upload the results to S3 bucket
-      - name: AWS CLI S3
-        run: |
-          aws s3 cp test/results/ s3://artillery --recursive --exclude "*" --include "artillery*"
+    - name: Rename results json
+      run: |
+        cp test/results/slsart-users-uid-tasks-results.json "test/results/artillery-test-users-user_id-tasks_${{ steps.date.outputs.date }}.json"
+    # Upload the results to S3 bucket
+    - name: AWS CLI S3
+      run: |
+        aws s3 cp test/results/ s3://artillery --recursive --exclude "*" --include "artillery*"
 
       
       
