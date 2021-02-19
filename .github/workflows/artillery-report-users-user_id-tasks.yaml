@@ -49,7 +49,7 @@ jobs:
       run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artillery_${{ steps.date.outputs.date }}.json ./test/artillery/artillery-users-user_id-tasks.yaml
 
 # https://github.com/zdurham/s3-upload-github-action
-    - name: Upload file to bucket alternative way
+    - name: Upload file to S3 using zdurham s3-upload-github-action
       uses: zdurham/s3-upload-github-action@master
       with:
         args: --acl public-read
