@@ -34,14 +34,6 @@ jobs:
     - name: 'Run npm init'
       run: npm init -y
 
-    # Configure the AWS credentials
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-2
-
     #install artillery
     - name: Run npm install artillery  
       run: npm install -g artillery
@@ -54,4 +46,5 @@ jobs:
     # Call artillery test located at ./test/artillery/artillery-users-user_id-tasks.yaml
     # Return results to json
     - name: Run Artillery Test
-      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artillery-test-users-user_id-tasks_${{ steps.date.outputs.date }}.json ./test/artillery/artillery-users-user_id-tasks.yaml
+      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artillery_${{ steps.date.outputs.date }}.json ./test/artillery/artillery-users-user_id-tasks.yaml
+
