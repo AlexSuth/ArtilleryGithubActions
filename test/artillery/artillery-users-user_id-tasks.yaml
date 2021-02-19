@@ -1,5 +1,5 @@
 config:
-  target: "https://nsc-fun-dev-usw2-thursday.azurewebsites.net"
+  target: "https://nsc-fun-dev-usw2-thursday.azurewebsites.net/api/users/{userId:1}/tasks?"
   phases:
   - duration: 100
     arrivalRate: 0
@@ -10,6 +10,6 @@ scenarios:
   - name: "Test flow"
     flow:
       - get:
-          url: "/users/1/tasks"
+          # url: "/users/1/tasks"
           expect:
             - statusCode: 200
