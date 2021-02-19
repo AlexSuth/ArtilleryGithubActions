@@ -52,11 +52,11 @@ jobs:
     # Call artillery test located at ./test/artillery/artillery-users-user_id-tasks.yaml
     # Return results to json
     - name: Run Artillery Test
-      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output test/results/artillery-test-users-user_id-tasks-results.json ./test/artillery/artillery-users-user_id-tasks.yaml
+      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output test/results/artillery-test-users-user_id-tasks_${{ steps.date.outputs.date }}.json ./test/artillery/artillery-users-user_id-tasks.yaml
       
-    - name: Rename results json
-      run: |
-        cp test/results/artillery-test-users-user_id-tasks-results.json "test/results/artillery-test-users-user_id-tasks_${{ steps.date.outputs.date }}.json"
+    # - name: Rename results json
+    #   run: |
+    #     cp test/results/artillery-test-users-user_id-tasks-results.json "test/results/artillery-test-users-user_id-tasks_${{ steps.date.outputs.date }}.json"
     # Upload the results to S3 bucket
     - name: AWS CLI S3
       run: |
