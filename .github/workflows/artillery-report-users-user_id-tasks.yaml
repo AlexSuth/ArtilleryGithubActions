@@ -54,9 +54,9 @@ jobs:
       with:
         args: --acl public-read
       env:
-        FILE: artillery_${{ steps.date.outputs.date }}.json
+        FILE: artillery-test-users-user_id-tasks_${{ steps.date.outputs.date }}.json
         AWS_REGION: 'us-west-2'
         S3_BUCKET: artillery  
-        S3_KEY: artillery_${{ steps.date.outputs.date }}.json
+        S3_KEY: artillery-test-users-user_id-tasks_${{ steps.date.outputs.date }}.json
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
