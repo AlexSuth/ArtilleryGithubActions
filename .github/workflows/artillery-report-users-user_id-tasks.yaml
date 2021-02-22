@@ -56,7 +56,7 @@ jobs:
       
     - name: Rename results json
       run: |
-        cp test/results/artillery-test-users-user_id-tasks-results.json "test/results/artillery-test-users-user_id-tasks_${{ steps.date.outputs.date }}.json"
+        cp test/results/artillery-test-users-user_id-tasks-results.json "test/results/artillery_${{ steps.date.outputs.date }}.json"
     # Upload the results to S3 bucket
     - name: AWS CLI S3
       run: |
