@@ -1,5 +1,8 @@
 name: sql injection PUT
 
+on: [push]
+name: sql injection PUT
+
 jobs:
   PUT-sql-injection:
     # Create ubuntu VM for actions
@@ -32,6 +35,9 @@ jobs:
   
 
 
+ 
+
+ 
  
 
  
