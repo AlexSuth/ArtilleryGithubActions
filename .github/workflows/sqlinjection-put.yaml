@@ -28,10 +28,10 @@ jobs:
     
     - name: 'POST Request'
       uses: satak/webrequest-action@master
-        with:
-          url: https://webhook.site/${{ secrets.WEBHOOK_ID }}
-          method: POST
-          payload: '{"title": "Actions test","description": "Test POST via github actions"}'
+      with:
+        url: https://webhook.site/${{ secrets.WEBHOOK_ID }}
+        method: POST
+        payload: '{"title": "Actions test","description": "Test POST via github actions"}'
 
 
    
