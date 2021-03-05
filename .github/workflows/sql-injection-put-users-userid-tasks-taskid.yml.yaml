@@ -1,6 +1,10 @@
 name: sql injection PUT
 
-on: [push]
+on: 
+  push:
+    # Action is called when a branch is merged with development
+    branches:
+      - development  
 
 jobs:
   PUT-sql-injection:
@@ -12,16 +16,12 @@ jobs:
     - name: 'Checkout Repository GitHub Action' 
       uses: actions/checkout@v2
 
-    - name: 'GET Request'
-      uses: satak/webrequest-action@master
-      with:
-        url: https://nsc-fun-dev-usw2-thursday.azurewebsites.net/api/users/1/tasks/3103
-        method: GET
-
+    #Test endpoint with GET request to ensure it is still there
     - name: 'GET curl'
       run: | 
         curl https://nsc-fun-dev-usw2-thursday.azurewebsites.net/api/users/1/tasks/3103
 
+    #PUT Request with SQL Injection statement
     - name: 'SQL Injection'
       run: |
         curl -v -X PUT -d '{
