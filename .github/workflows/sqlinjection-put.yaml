@@ -1,7 +1,6 @@
 name: sql injection PUT
 
 on: [push]
-name: sql injection PUT
 
 jobs:
   PUT-sql-injection:
