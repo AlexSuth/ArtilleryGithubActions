@@ -34,4 +34,16 @@ jobs:
         payload: '{"title": "Actions test","description": "Test POST via github actions"}'
 
 
-   
+    - name: 'PUT Request'
+      uses: satak/webrequest-action@master
+      with:
+        url: https://nsc-fun-dev-usw2-thursday.azurewebsites.net/api/users/1/tasks/3102
+        method: PUT
+        payload: '{
+                    "title": "Alterations",
+                    "description": "Review and alter as needed",
+                    "createdDate": "2021-03-03 02:22:06.450000",
+                    "dueDate":null,
+                    "completed": 1,
+                    "completedDate": null
+                  }'
